@@ -51,3 +51,9 @@ div.container div.dropDown:hover .dropDown-content {
 div.container div.dropDown:hover button.dropButton {
     background-color: hsl(0, 0%, 30%);
 }
+.enter {
+    margin-top: 5px;
+}
+.input {
+    display: none;
+}
