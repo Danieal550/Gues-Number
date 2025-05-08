@@ -14,8 +14,8 @@ function testInput() {
     max = Number(maxInput.value);
     if (min >= max) {
         window.alert("Max mesti lebih besar daripada Min!");
-        minInput.value = 0;
-        maxInput.value = 0;
+        minInput.value = ``;
+        maxInput.value = ``;
         return;
     }
     buttonSub.disabled = false;
