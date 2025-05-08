@@ -7,7 +7,9 @@ let maxInput = document.getElementById("max");
 let min = 0, max = 0;
 let randomNum = 0, attempts = 0;
 
-buttonSetting.onclick = function() {
+
+// Test input
+function testInput() {
     min = Number(minInput.value);
     max = Number(maxInput.value);
     if (min >= max) {
@@ -16,11 +18,23 @@ buttonSetting.onclick = function() {
         maxInput.value = 0;
         return;
     }
+    buttonSub.disabled = false;
+    document.querySelector(".dropDown").style.display = "none";
+    document.querySelector(".input").style.display = "block";
     randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
 }
+// Enter key
+gues.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        buttonSub.click();
+    }
+});
 
+// Submit button
 buttonSub.onclick = function() {
     let guessedNumber = Number(gues.value);
+    gues.value = ``;
 
     if (isNaN(guessedNumber) || gues == "") {
         display.textContent = "Sila masukkan nombor!";
@@ -39,8 +53,15 @@ buttonSub.onclick = function() {
     } else if (guessedNumber < randomNum) {
         display.textContent = "Rendah! Cuba lagi.";
     } else {
+        buttonSub.disabled = true;
         display.textContent = `Betul! Anda meneka dalam ${attempts} percubaan.`;
         attempts = 0;
         randomNum = 0;
+        setTimeout(() => {
+            document.querySelector(".input").style.display = "none";
+            document.querySelector(".dropDown").style.display = "block";
+            display.textContent = 0;
+        }, 3000);
+        
     }
 }
