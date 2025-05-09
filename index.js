@@ -19,6 +19,8 @@ function testInput() {
         return;
     }
     buttonSub.disabled = false;
+    display.textContent = 0;
+    gues.value = ``;
     document.querySelector(".dropDown").style.display = "none";
     document.querySelector(".input").style.display = "block";
     randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -60,7 +62,6 @@ buttonSub.onclick = function() {
         setTimeout(() => {
             document.querySelector(".input").style.display = "none";
             document.querySelector(".dropDown").style.display = "block";
-            display.textContent = 0;
         }, 3000);
         
     }
